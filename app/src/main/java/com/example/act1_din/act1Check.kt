@@ -31,11 +31,15 @@ fun act1Check(modifier: Modifier = Modifier) {
     var util by rememberSaveable { mutableStateOf(true) }
     var option by rememberSaveable { mutableStateOf(mutableListOf<String>()) }
 
+    var rojo by rememberSaveable { mutableStateOf(0) }
+    var azul by rememberSaveable { mutableStateOf(255) }
+    var verde by rememberSaveable { mutableStateOf(255) }
+
 
     Column (
         modifier = modifier
             .fillMaxSize()
-            .background(Color.Cyan),
+            .background(color = Color(rojo,verde,azul)),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
@@ -69,6 +73,11 @@ fun act1Check(modifier: Modifier = Modifier) {
                 visible = false
             }
         )
+
+        SliderExample(text = "Rojo", onCambioColor = {rojo = it.toInt()})
+        SliderExample(text = "Verde", onCambioColor = {verde = it.toInt()})
+        SliderExample(text = "Azul", onCambioColor = {azul = it.toInt()})
+
 
     }
 }
